@@ -1,0 +1,35 @@
+
+October 11, 2025:
+- Implemented the Stage 1 Producer function to generate and send data to the buffer
+- Defined the shared data structure thats used for communication with the later stages.
+- Added a mutex and a condition setup to prevent race conditions during production
+- I need to confirm the correct timing & sequencing from the printed produced items
+- Need to confirm that the thread launches and exits cleanly without deadlock
+- Gained a stronger understanding of how producer threads coordinate using mutexes and condition variables
+- Realized how crucial it is to initialize suncronization before creating threads
+- Learned that you should isolate each stage for testing so that you don't need to debug the entire pipeline at once
+- Gained some extra insight from https://stackoverflow.com/questions/54489332/python-multithreading-producer-consumer-pattern
+- Will focus on Stage 2 Prod & Stage 3 Consumer together to gain deep insight and fundamental understandings
+ 
+October 13-14 2025:
+- Implemented the Stage 2 consumer/producer thread to recieve validated requests from Mailbox 1
+- Was able to parse the incoming raw messages and translated the READ and WRITE strings to 0s and 1s respectivly
+- Added formatted logging to the stage2.log file to match the output in projects details
+- Adjusted log format to show 0 and 1 instead of "READ" and "WRITE" to match sample output
+- Captures timestamps using ctime() and removed the trailing newline for clean log formatting
+- Sent validated messages into Mailbox 2 with each message's priority as the MQ priority value
+- Added detailed console printouts for runtime traceing and debugging
+- Verified the proper operation of Stage 2 by matching the console output with the expected output
+- Simulated compute workload with bsort()
+- Implemented the Stage 3 consumer to recieve completed messages from Mailbox 2 and write them to stage3.log
+- Used ctime() again in Stage 3 for accurate completion timestamps and consistent date formatting.
+- Added a clean, readable log format for Stage 3 with separated fields
+- Verified the pipeline flow: Stage1 -> Stage2 -> Stage3
+- Confirmed the kernl-space message queues functioned as cicular buffers, maintaining FIFO order
+- Debugged a formatting mismatch where Stage2 was showing READ & WRITE instead of 0s and 1s and fixed it
+- Ensuread threads terminated cleanly and queues close/unlinked properly at the end of execution
+- Learned how Linux message queues handle priorities and interal synchronization automatically
+- Gained a much deeper understanding of how multithreaded stages communicate via kernel-space 
+- Used stackoverflow to understand some issues: https://stackoverflow.com/questions/4180735/c-problem-with-message-passing-between-threads-using-queues
+- https://stackoverflow.com/questions/76934935/creating-message-queue-with-the-help-of-threads
+- Cleaned up proj2.c file, ready for submission
