@@ -90,4 +90,4 @@ gcc -o proj2 proj2.c -lpthread -lrt
 - A key debugging challenge involved a log formatting mismatch in Stage 2 (READ/WRITE strings vs. 0/1 integers) that was caught by comparing against expected sample output
 - Linux message queues handle internal priority sorting and synchronization automatically — Stage 2 leverages this by passing each message's priority directly as the MQ priority value
 - Source files have been partially redacted to comply with CMSC 421 academic integrity guidelines — this repo is a portfolio showcase, not a complete runnable submission
-- See [`Worklog`](./Worklog) for a session-by-session breakdown of hours and tasks
+- See [`Worklog`](./worklog) for a session-by-session breakdown of hours and tasks
